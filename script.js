@@ -128,15 +128,23 @@ const calcul   = () => {
     }
 };
 
+//*************Service Worker ******************/
+// Register service worker to control making site work offline
+if('serviceWorker' in navigator)
+{
+	navigator.serviceWorker
+			 .register('/uber-verif/sw.js', {scope: '/uber-verif/'})
+			 .then(function() { console.log('Service Worker for uber-verif Registered'); });
+}
+
 /************Permettre le 100vh sur mobile */
 let vh = window.innerHeight * 0.01;
 const hauteur = window.innerHeight;
 // Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-
-//const metas = document.getElementsByTagName('meta');
-//metas[1].content = 'width=device-width, height=' + window.innerHeight + ' initial-scale=1.0, maximum-scale=5.0,user-scalable=0';
+const metas = document.getElementsByTagName('meta');
+metas[1].content = 'width=device-width, height=' + window.innerHeight + ' initial-scale=1.0, maximum-scale=5.0,user-scalable=0';
 
 
 /*********************************** */
