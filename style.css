@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #393e46;
+    color: white;
+    height: 100%;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+header{
+    height: 10vh;
+    background: url("header.png") no-repeat center center;
+    background-size: contain;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(95, 95, 95, 0.75), rgba(0, 0, 0, 0));
+}
+
+label{
+    display: block;
+    padding-left: 2vw;
+}
+
+input[type=number], input[type=time]{
+    border: solid 1px grey;
+    border-radius: 5px;
+    width: 40%;
+    height: 5vh;
+    background-color: #545556;
+    margin-left: 2vw;
+    padding-left: 1vw;
+    font-size: 3vh;
+    color: whitesmoke;
+    font-family: 'Electrolize', sans-serif;
+    transition: all 0.5s;
+}
+
+input:active{
+    border: solid 1px lightgreen;
+}
+
+.radio{
+    display: flex;
+    justify-content: space-around;
+}
+
+.radioLabel{
+    padding: 2vw;
+    background-color: #393e46;
+    width: 50%;
+    transition: all 0.5s;
+    text-align: center;
+    font-size: 3vh;
+}
+
+.radioLabel:active{
+    background-color: #41454c;
+}
+
+.checked{
+    background-color: #929aa1;
+    background-image: linear-gradient(270deg, #393e46, #545556);
+}
+    
+.span{
+    position: absolute;
+    right: 2vw;
+    transition: all 0.5s;
+    transform: translate(150%);
+}
+
+.sm-grey{
+    color:grey;
+    font-size: smaller;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: limegreen;
+}
+
+.lg-color{
+    color: limegreen;
+    font-size: larger;
+}
+
+em{
+    font-weight: 600;
+    color: silver;
+}
+
+.top{
+    margin-top: 1vh;
+}
+
+.vertical{
+    display: flex;
+    align-items: center;
+}
+
+.center{
+    text-align: center;
+}
+
+#divBase{
+    text-align: center;
+    font-style: oblique;
+    padding-top: 1vh;
+    color: gray;
+}
+
+.divBase{
+    transform: translate(-100%);
+    transition: all 0.5s;
+}
+
+#divRevenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    font-size: 7vh;
+    transition: all 0.3s;
+}
+
+
+.slide{
+    transform: translate(0);
+}
+
+.scale15{
+    animation: scale 0.3s;
+}
+
+@keyframes scale {
+    0%   { transform: scale(1.5);}
+    100% { transform: scale(1); }
+  }
