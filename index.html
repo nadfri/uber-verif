@@ -35,24 +35,26 @@
             <label class="top" for="duree">Durée<span class="span sm-grey" id="labelDuree">0.50€/min</span></label>
 
             <div class="vertical">
-                <input class="time" id="duree" type="time" step="1" value="00:00:00">
+                <input class="time input" id="hour"    type="tel" maxlength="2" placeholder="hh"><i>h</i>
+                <input class="time input" id="minute"  type="tel" maxlength="2" placeholder="mm"><i>m</i>
+                <input class="time input" id="seconde" type="tel" maxlength="2" placeholder="ss"><i>s</i>
                 <span id="spanDuree" class="span lg-color"></span>
             </div>
 
             <label for="distance">Distance<span class="span sm-grey" id="labelDistance">1.55€/kms</span></label>
 
             <div class="vertical">
-                <input id="distance" type="number" placeholder="5.18kms" step="0.01" inputmode="decimal">kms
+                <input class="number input" id="distance" type="text" placeholder="5.18kms" inputmode="decimal" autocomplete="off"><i>kms</i>
                 <span class="span lg-color" id="spanDistance"></span>
             </div>
 
             <label for="attente">Attente<span id="spanPrixAttente" class="span sm-grey">0.40€/min</span></label>
-            <input id="attente" type="number" placeholder="2.48€" step="0.01" inputmode="decimal">€
+            <input class="number input" id="attente" type="text" placeholder="2.48€" inputmode="decimal" autocomplete="off"><i>€</i>
             <span id="spanAttente" class="span lg-color"></span>
         </section>
 
         <section>
-            <hr class="top">
+            <hr>
 
             <div class="center">Revenus vérifiés</div>
 

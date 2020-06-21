@@ -1,7 +1,7 @@
 window.onload = () =>{
     "use strict";
 //Declaration des variables globales
-let dureeSec     = 0;  
+let duree = 0;
 let distanceCalc = 0;
 let base         = 5;
 let prixDuree    = 0.50;
@@ -64,56 +64,55 @@ van.onclick   = () => {
 };
 
 //Mise à jour en temps reel des prix en fonction des inputs
-duree.onchange = () => {
+const liveUpdate = (input,span) =>{
     calcul(); 
-    spanDuree.classList.add("slide");
-    if(duree.value == "" || duree.value == "00:00") spanDuree.classList.remove("slide");
-    //effet scale sur divRevenu 
+    span.classList.add("slide");
+    if(input.value == "") span.classList.remove("slide");
+
     divRevenu.classList.add("scale15");
     setTimeout(()=>{divRevenu.classList.remove("scale15")},300);
 };
+//----------
+hour.oninput    = () => liveUpdate(hour,spanDuree);
+minute.oninput  = () => liveUpdate(minute,spanDuree);
+seconde.oninput = () => liveUpdate(seconde,spanDuree);
 
 distance.oninput   = () => {
-    if(distance.value.length >7) //empeche la saisie d'un nombre de plus de 7 chiffres
-        distance.value = Math.trunc((distance.value)/10);
+    let regex = /^\d{1,4}(\.\d{0,2})?$|^\d{1,4}(,\d{0,2})?$/; //regex pour controle autorisé uniquement nombre avec 2 chiffres apres virgule
+    distance.value = distance.value.replace(",","."); //remplace "," par "."
+    if (!regex.test(distance.value))
+        distance.value = distance.value.substring(0,distance.value.length-1);//supprime le dernier caractere non autorisé
 
-    calcul(); 
-    spanDistance.classList.add("slide");
-    if(distance.value == "") spanDistance.classList.remove("slide");
+    liveUpdate(distance,spanDistance);
 
-    divRevenu.classList.add("scale15");
-    setTimeout(()=>{divRevenu.classList.remove("scale15")},300);
 };
 
 attente.oninput   = () => {
-    if(attente.value.length >6) //empeche la saisie d'un nombre de plus de  chiffres
-        attente.value = Math.trunc((attente.value)/10);
-    calcul();
-    spanAttente.textContent = "+" + attente.value + "€"; 
-    spanAttente.classList.add("slide");
-    if(attente.value == "") spanAttente.classList.remove("slide");
+    let regex = /^\d{1,3}(\.\d{0,2})?$|^\d{1,3}(,\d{0,2})?$/;
+    attente.value = attente.value.replace(",",".");
+    if (!regex.test(attente.value))
+        attente.value = attente.value.substring(0,attente.value.length-1);
 
-    divRevenu.classList.add("scale15");
-    setTimeout(()=>{divRevenu.classList.remove("scale15")},300);
+    liveUpdate(attente,spanAttente);
 };
  
 const calcul   = () => {
-    dureeSec   = (new Date('1970-01-01T' + duree.value   + 'Z').getTime()/1000*prixDuree/60).toFixed(2); //conversion en seconde
-    if (isNaN(dureeSec)) dureeSec = 0; //si NaN, prend la valeur 0
-    spanDuree.textContent = "+" + dureeSec + "€";
+    duree = ((Number(hour.value)*60 + Number(minute.value) + Number(seconde.value)/60)*prixDuree).toFixed(2);
+    spanDuree.textContent = "+" + duree + "€";
     
     distanceCalc = (distance.value*prixKm).toFixed(2);
-    spanDistance.textContent = "+" + distanceCalc + "€"; //onchange ne marche pas sur number
+    spanDistance.textContent = "+" + distanceCalc + "€"; 
 
-    //let total  = (Number(dureeSec)+Number(attenteSec)+Number(distanceCalc)+base).toFixed(2);
-    let total  = (Number(dureeSec) + Number(attente.value) + Number(distanceCalc) + base).toFixed(2);
+    spanAttente.textContent = "+" + attente.value + "€"; 
+
+    let total  = (Number(duree) + Number(attente.value) + Number(distanceCalc) + base).toFixed(2);
     let frais  = (total*0.25).toFixed(2);
     let revenu = (total-frais).toFixed(2);
     spanTotal.textContent  = total  + "€";
     spanFrais.textContent  = "-" + frais + "€";
     
-    //Affiche l'effet translate si aucune valeur est nulle
-    if(dureeSec == 0  && distanceCalc == 0 && attente.value == 0) 
+    //Active l'effet translate si aucune valeur est nulle
+    if(duree == 0  && distanceCalc == 0 && attente.value == 0) 
     {
         spanTotal.classList.remove("slide");
         spanFrais.classList.remove("slide");
@@ -130,12 +129,12 @@ const calcul   = () => {
 
 //*************Service Worker ******************/
 // Register service worker to control making site work offline
-if('serviceWorker' in navigator)
-{
-	navigator.serviceWorker
-			 .register('/uber-verif/sw.js', {scope: '/uber-verif/'})
-			 .then(function() { console.log('Service Worker for uber-verif Registered'); });
-}
+// if('serviceWorker' in navigator)
+// {
+// 	navigator.serviceWorker
+// 			 .register('/uber-verif/sw.js', {scope: '/uber-verif/'})
+// 			 .then(function() { console.log('Service Worker for uber-verif Registered'); });
+// }
 
 /************Permettre le 100vh sur mobile */
 let vh = window.innerHeight * 0.01;

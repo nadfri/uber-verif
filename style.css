@@ -37,25 +37,34 @@ label{
     padding-left: 2vw;
 }
 
-input[type=number], input[type=time]{
+.input{
     border: solid 1px grey;
     border-radius: 5px;
-    width: 40%;
     height: 5vh;
     background-color: #545556;
-    margin-left: 2vw;
-    padding-left: 1vw;
-    font-size: 3vh;
-    color: whitesmoke;
     font-family: 'Electrolize', sans-serif;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
-
+    font-size: 3vh;
+    color: whitesmoke;
+    text-align: center;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
 }
 
 input:active{
     border: solid 1px lightgreen;
 }
+
+.time{
+    width: 10vw;
+}
+
+.number{
+    width: 38vw;
+}
+
+
 
 .radio{
     display: flex;
@@ -114,6 +123,11 @@ em{
     color: silver;
 }
 
+i{
+    color: grey;
+    font-style: normal;
+}
+
 .top{
     margin-top: 1vh;
 }
@@ -130,7 +144,7 @@ em{
 #divBase{
     text-align: center;
     font-style: oblique;
-    padding-top: 1vh;
+    padding-top: 0.5vh;
     color: gray;
 }
 
