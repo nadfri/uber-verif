@@ -106,6 +106,9 @@ const calcul   = () => {
     spanAttente.textContent = "+" + attente.value + "€"; 
 
     let total  = (Number(duree) + Number(attente.value) + Number(distanceCalc) + base).toFixed(2);
+    if( total<15 && van.checked) total = 15 + Number(attente.value);
+    else if (total<6 && uberX.checked) total = 6 + Number(attente.value);
+
     let frais  = (total*0.25).toFixed(2);
     let revenu = (total-frais).toFixed(2);
     spanTotal.textContent  = total  + "€";
