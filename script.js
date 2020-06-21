@@ -128,13 +128,13 @@ const calcul   = () => {
 };
 
 //*************Service Worker ******************/
-// Register service worker to control making site work offline
-// if('serviceWorker' in navigator)
-// {
-// 	navigator.serviceWorker
-// 			 .register('/uber-verif/sw.js', {scope: '/uber-verif/'})
-// 			 .then(function() { console.log('Service Worker for uber-verif Registered'); });
-// }
+//Register service worker to control making site work offline
+if('serviceWorker' in navigator)
+{
+	navigator.serviceWorker
+			 .register('/uber-verif/sw.js', {scope: '/uber-verif/'})
+			 .then(function() { console.log('Service Worker for uber-verif Registered'); });
+}
 
 /************Permettre le 100vh sur mobile */
 let vh = window.innerHeight * 0.01;
