@@ -11,9 +11,9 @@ let prixKm       = 1.55;
 labelDuree.classList     .add("slide");
 spanPrixAttente.classList.add("slide");
 labelDistance.classList  .add("slide");
-divBase.classList        .add("slide");
+spanBase.classList       .add("slide");
 //Mise à jour du prix de base
-divBase.innerHTML = `Prix de Base: <em>${base}€</em>`;
+spanBase.textContent = "+" + base + "€";
 
 
 uberX.onclick = () => {
@@ -21,7 +21,7 @@ uberX.onclick = () => {
     base      = 1.20;
     prixDuree = 0.31;
     prixKm    = 1.05;
-    divBase.innerHTML = `Prix de Base: <em>${base}0€</em>`;
+    spanBase.textContent = "+" + base + "0€";
     labelDuree.textContent = '0.31€/min';
     labelDistance.textContent = '1.05€/kms';
     calcul();
@@ -32,12 +32,12 @@ uberX.onclick = () => {
     //Redemarrage de l'effet slide via un setTimeout
     labelDuree.classList.remove("slide");
     labelDistance.classList.remove("slide");
-    divBase.classList.remove("slide");
+    spanBase.classList.remove("slide");
 
     setTimeout(()=>{
         labelDuree.classList.add("slide");
         labelDistance.classList.add("slide");
-        divBase.classList.add("slide");
+        spanBase.classList.add("slide");
     },300);
 };
     
@@ -45,7 +45,7 @@ van.onclick   = () => {
     base      = 5;
     prixDuree = 0.50;
     prixKm    = 1.55;
-    divBase.innerHTML = `Prix de Base: <em>${base}€</em>`;
+    spanBase.textContent = "+" + base + "€";
     labelDuree.textContent = '0.50€/min';
     labelDistance.textContent = '1.55€/kms'; 
     calcul(); 
@@ -54,12 +54,12 @@ van.onclick   = () => {
 
     labelDuree.classList.remove("slide");
     labelDistance.classList.remove("slide");
-    divBase.classList.remove("slide");
+    spanBase.classList.remove("slide");
     
     setTimeout(()=>{
         labelDuree.classList.add("slide");
         labelDistance.classList.add("slide");
-        divBase.classList.add("slide");
+        spanBase.classList.add("slide");
     },300);
 };
 

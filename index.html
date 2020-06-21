@@ -35,8 +35,8 @@
             <label class="top" for="duree">Durée<span class="span sm-grey" id="labelDuree">0.50€/min</span></label>
 
             <div class="vertical">
-                <input class="time input" id="hour"    type="tel" maxlength="2" placeholder="hh"><i>h</i>
-                <input class="time input" id="minute"  type="tel" maxlength="2" placeholder="mm"><i>m</i>
+                <input class="time input" id="hour" type="tel" maxlength="2" placeholder="hh"><i>h</i>
+                <input class="time input" id="minute" type="tel" maxlength="2" placeholder="mm"><i>m</i>
                 <input class="time input" id="seconde" type="tel" maxlength="2" placeholder="ss"><i>s</i>
                 <span id="spanDuree" class="span lg-color"></span>
             </div>
@@ -44,30 +44,27 @@
             <label for="distance">Distance<span class="span sm-grey" id="labelDistance">1.55€/kms</span></label>
 
             <div class="vertical">
-                <input class="number input" id="distance" type="text" placeholder="5.18kms" inputmode="decimal" autocomplete="off"><i>kms</i>
+                <input class="number input" id="distance" type="text" placeholder="5.18kms" inputmode="decimal"
+                    autocomplete="off"><i>kms</i>
                 <span class="span lg-color" id="spanDistance"></span>
             </div>
 
             <label for="attente">Attente<span id="spanPrixAttente" class="span sm-grey">0.40€/min</span></label>
-            <input class="number input" id="attente" type="text" placeholder="2.48€" inputmode="decimal" autocomplete="off"><i>€</i>
+            <input class="number input" id="attente" type="text" placeholder="2.48€" inputmode="decimal"
+                autocomplete="off"><i>€</i>
             <span id="spanAttente" class="span lg-color"></span>
         </section>
 
         <section>
             <hr>
-
             <div class="center">Revenus vérifiés</div>
-
             <div class="center" id="divRevenu">0€</div>
-
             <hr>
-
-            <div id="divBase" class="divBase"></div>
-
-            <span>TOTAL:</span><span class="span green" id="spanTotal"></span>
+            Prix de base:<span class="span green" id="spanBase"></span>
             <br>
-            <span>Frais Uber (25%): </span><span class="span red" id="spanFrais"></span>
-
+            TOTAL:<span class="span green" id="spanTotal"></span>
+            <br>
+            Frais Uber (25%):<span class="span red" id="spanFrais"></span>
         </section>
     </div>
 

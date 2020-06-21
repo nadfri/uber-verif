@@ -64,8 +64,6 @@ input:active{
     width: 38vw;
 }
 
-
-
 .radio{
     display: flex;
     justify-content: space-around;
@@ -118,10 +116,6 @@ input:active{
     font-size: larger;
 }
 
-em{
-    font-weight: 600;
-    color: silver;
-}
 
 i{
     color: grey;
@@ -141,19 +135,6 @@ i{
     text-align: center;
 }
 
-#divBase{
-    text-align: center;
-    font-style: oblique;
-    padding-top: 0.5vh;
-    color: gray;
-}
-
-.divBase{
-    transform: translate(-100%);
-    -webkit-transform: translate(-100%);
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-}
 
 #divRevenu{
     display: flex;
