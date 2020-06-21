@@ -1,7 +1,7 @@
 window.onload = () =>{
     "use strict";
 //Declaration des variables globales
-let duree = 0;
+let duree        = 0;
 let distanceCalc = 0;
 let base         = 5;
 let prixDuree    = 0.50;
@@ -67,12 +67,20 @@ van.onclick   = () => {
 const liveUpdate = (input,span) =>{
     calcul(); 
     span.classList.add("slide");
-    if(input.value == "") span.classList.remove("slide");
+    if(span == spanDuree && duree == 0.00) span.classList.remove("slide");
+    else if(input.value == "")             span.classList.remove("slide");
+    
 
     divRevenu.classList.add("scale15");
     setTimeout(()=>{divRevenu.classList.remove("scale15")},300);
 };
 //----------
+hour.onfocus     = () => {hour.value     = ""; calcul();if(duree == 0.00) spanDuree.classList.remove("slide");} 
+minute.onfocus   = () => {minute.value   = ""; calcul();if(duree == 0.00) spanDuree.classList.remove("slide");} 
+seconde.onfocus  = () => {seconde.value  = ""; calcul();if(duree == 0.00) spanDuree.classList.remove("slide");} 
+distance.onfocus = () => {distance.value = ""; liveUpdate(distance,spanDistance);};
+attente.onfocus  = () => {attente.value  = ""; liveUpdate(attente,spanAttente);};
+
 hour.oninput    = () => liveUpdate(hour,spanDuree);
 minute.oninput  = () => liveUpdate(minute,spanDuree);
 seconde.oninput = () => liveUpdate(seconde,spanDuree);
