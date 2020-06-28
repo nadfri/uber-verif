@@ -91,6 +91,7 @@ minute.onfocus   = () => {minute.value   = ""; calcul();if(duree == 0.00) spanDu
 seconde.onfocus  = () => {seconde.value  = ""; calcul();if(duree == 0.00) spanDuree.classList.remove("slide");} 
 distance.onfocus = () => {distance.value = ""; liveUpdate(distance,spanDistance);};
 attente.onfocus  = () => {attente.value  = ""; liveUpdate(attente,spanAttente);};
+coeff.onfocus    = () => coeff.value = "";
 
 //----------Gestion des inputs en temps réel--------------
 hour.oninput    = () => liveUpdate(hour,spanDuree);
@@ -104,7 +105,6 @@ distance.oninput   = () => {
         distance.value = distance.value.substring(0,distance.value.length-1);//supprime le dernier caractere non autorisé
 
     liveUpdate(distance,spanDistance);
-
 };
 
 attente.oninput   = () => {
@@ -114,6 +114,17 @@ attente.oninput   = () => {
         attente.value = attente.value.substring(0,attente.value.length-1);
 
     liveUpdate(attente,spanAttente);
+};
+
+coeff.oninput   = () => {
+    let regex = /^\d{1}(\.\d{0,1})?$|^\d{1}(,\d{0,1})?$/;
+    coeff.value = coeff.value.replace(",",".");
+    if (!regex.test(coeff.value))
+        coeff.value = coeff.value.substring(0,coeff.value.length-1);
+
+    calcul();
+    divRevenu.classList.add("scale15");
+    setTimeout(()=>{divRevenu.classList.remove("scale15")},300);
 };
 
 //----------Gestion des calculs-------------- 
@@ -126,9 +137,11 @@ const calcul   = () => {
 
     spanAttente.textContent = "+" + attente.value + "€"; 
 
-    let total  = (Number(duree) + Number(attente.value) + Number(distanceCalc) + base).toFixed(2);
-    if( total<15 && van.checked) total = 15 + Number(attente.value);
-    else if (total<6 && uberX.checked) total = 6 + Number(attente.value);
+    let multi = (coeff.value == "")? 1 : coeff.value; //coefficient dynamique
+
+    let total  = ((Number(duree) + Number(attente.value) + Number(distanceCalc) + base)*multi).toFixed(2);
+    if( total/multi <15 && van.checked)       total = 15*multi + Number(attente.value);
+    else if (total/multi <6 && uberX.checked) total =  6*multi + Number(attente.value);
 
     let frais  = (total*0.25).toFixed(2);
     let revenu = (total-frais).toFixed(2);

@@ -135,15 +135,26 @@ i{
     text-align: center;
 }
 
+.revenu{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
 
 #divRevenu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 7vh;
     font-size: 7vh;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
+}
+
+#coeff{
+    position: absolute;
+    margin-top: 0.4vh;
+    right: 18vw;
+    width: 10vw;
+    height: 5vh;
 }
 
 
@@ -157,6 +168,7 @@ i{
     -webkit-animation: scale 0.3s;
 
 }
+
 
 @keyframes scale {
     0%   { transform: scale(1.5);}

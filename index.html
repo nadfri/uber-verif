@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0,user-scalable=0">
     <meta name="theme-color" content="#393e46">
     <meta name="Description" content="Vérificateur de Revenus UBER">
-    <meta name ="Author" content="nadfriJS">
+    <meta name="Author" content="nadfriJS">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -33,7 +33,7 @@
             </div>
             <hr>
 
-            <label class="top" for="duree">Durée<span class="span sm-grey" id="labelDuree">0.50€/min</span></label>
+            <label class="top" for="minute">Durée<span class="span sm-grey" id="labelDuree">0.50€/min</span></label>
 
             <div class="vertical">
                 <input class="time input" id="hour" type="tel" maxlength="2" placeholder="hh"><i>h</i>
@@ -59,11 +59,14 @@
         <section>
             <hr>
             <div class="center">Revenus vérifiés</div>
-            <div class="center" id="divRevenu">0€</div>
+            <div class="revenu">
+                <div id="divRevenu">0€</div>
+                <input class="input coeff" id="coeff" type="text" placeholder="x1.8" inputmode="decimal" autocomplete="off">
+            </div>
             <hr>
-             <p>Prix de base:<span class="span green" id="spanBase"></span></p>
-             <p>TOTAL:<span class="span green" id="spanTotal"></span></p>
-             <p>Frais Uber (25%):<span class="span red" id="spanFrais"></span></p>
+            <p>Prix de base:<span class="span green" id="spanBase"></span></p>
+            <p>TOTAL:<span class="span green" id="spanTotal"></span></p>
+            <p>Frais Uber (25%):<span class="span red" id="spanFrais"></span></p>
         </section>
     </div>
 
