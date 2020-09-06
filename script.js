@@ -1,18 +1,32 @@
-window.onload = () =>{
-    "use strict";
-//Declaration des variables globales
+"use strict";
+//Declaration des variables globales //Defaut UberVan
 let duree        = 0;
 let distanceCalc = 0;
 let base         = 5;
 let prixDuree    = 0.50;
 let prixKm       = 1.55;
+spanBase.textContent = "+" + base + "€"; //Mise à jour du prix de base
+
+//Gestion LocalStorage UberX/UberVan
+if(localStorage.getItem("type") == "uberX") 
+{
+    //Mise à jour des prix UberX
+    uberX.checked = true;
+    base      = 1.20;
+    prixDuree = 0.31;
+    prixKm    = 1.05;
+    spanBase.textContent = "+" + base + "0€";
+    labelDuree.textContent = '0.31€/min';
+    labelDistance.textContent = '1.05€/kms';
+}
 
 //Demarrage de l'effet slide au chargement de la page
 labelDuree.classList     .add("slide");
 spanPrixAttente.classList.add("slide");
 labelDistance.classList  .add("slide");
 spanBase.classList       .add("slide");
-spanBase.textContent = "+" + base + "€"; //Mise à jour du prix de base
+
+
 
 uberX.onclick = () => {
     //Mise à jour des prix
@@ -26,6 +40,8 @@ uberX.onclick = () => {
     //Toggle de l'effet css sur les radios
     document.querySelectorAll("label")[1].classList.add('checked');
     document.querySelectorAll("label")[0].classList.remove('checked');
+
+    localStorage.setItem("type", "uberX"); //sauvegarde du choix dans le localstorage
 
     //Redemarrage de l'effet slide via un setTimeout
     labelDuree.classList.remove("slide");
@@ -49,6 +65,8 @@ van.onclick   = () => {
     calcul(); 
     document.querySelectorAll("label")[1].classList.remove('checked');
     document.querySelectorAll("label")[0].classList.add('checked'); 
+
+    localStorage.setItem("type", "van"); //sauvegarde du choix dans le localstorage
 
     labelDuree.classList.remove("slide");
     labelDistance.classList.remove("slide");
@@ -181,6 +199,3 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 const metas = document.getElementsByTagName('meta');
 metas[1].content = 'width=device-width, height=' + window.innerHeight + ' initial-scale=1.0, maximum-scale=5.0,user-scalable=0';
-
-/*********************************** */
-};

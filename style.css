@@ -9,6 +9,7 @@
 
 body{
     height: calc(var(--vh, 1vh) * 100);
+    overflow-X: hidden;
 }
 
 .container{
@@ -93,8 +94,8 @@ input:active{
     right: 2vw;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
-    transform: translate(150%);
-    -webkit-transform: translate(150%);
+    transform: translate(200%);
+    -webkit-transform: translate(200%);
 
 }
 
