@@ -13,6 +13,14 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel='manifest' href='manifest.json'>
     <script src="script.js" defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KH1B2Z1VF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1KH1B2Z1VF');
+    </script>
 </head>
 
 <body>
@@ -61,7 +69,8 @@
             <div class="center">Revenus vérifiés</div>
             <div class="revenu">
                 <div id="divRevenu">0€</div>
-                <input class="input coeff" id="coeff" type="text" placeholder="x1.8" inputmode="decimal" autocomplete="off">
+                <input class="input coeff" id="coeff" type="text" placeholder="x1.8" inputmode="decimal"
+                    autocomplete="off">
             </div>
             <hr>
             <p>Prix de base:<span class="span green" id="spanBase"></span></p>
